@@ -24,7 +24,7 @@ func (r RuleEnglish) IsCorrect(text string) bool {
 func (r RuleEnglish) Fix(text string) string {
 	fixed := make([]rune, 0, len(text))
 	for _, char := range text {
-		if !unicode.IsLetter(char) || !unicode.Is(unicode.Latin, char) {
+		if unicode.IsLetter(char) && !unicode.Is(unicode.Latin, char) {
 			continue
 		}
 		fixed = append(fixed, char)
