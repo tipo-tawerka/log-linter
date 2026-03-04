@@ -1,9 +1,7 @@
-package english
+package rules
 
 import (
 	"unicode"
-
-	"github.com/tipo-tawerka/log-linter/internal/analyzer/rules"
 )
 
 type RuleEnglish struct {
@@ -33,5 +31,5 @@ func (r RuleEnglish) Fix(text string) string {
 }
 
 func init() {
-	rules.AddRule(RuleEnglish{}, "english", "требовать только английские буквы")
+	addRule(RuleEnglish{}, "english", "требовать только английские буквы")
 }

@@ -31,10 +31,10 @@ var registeredRules []RuleData
 // Вызывает панику, если правило с таким именем уже существует.
 // Внимание, функция не потокобезопасная, предполагается, что она будет вызываться только в init() функции пакетов
 // которые используют правила.
-func AddRule(rule Rule, name string, description string) {
+func addRule(rule Rule, name string, description string) {
 	for _, r := range registeredRules {
 		if r.Name == name {
-			panic(fmt.Sprintf("rules with name %s already exist", name))
+			panic(fmt.Sprintf("rule with name %s already exist", name))
 		}
 	}
 	registeredRules = append(registeredRules, RuleData{
@@ -42,7 +42,25 @@ func AddRule(rule Rule, name string, description string) {
 	})
 }
 
-// GetRules возвращает срез всех зарегистрированных правил.
-func GetRules() []RuleData {
+// GetRules возвращает срез правил, используемых для проверки текстов логов.
+func GetRules(names []string) ([]RuleData, error) {
+	rules := make([]RuleData, 0, len(names))
+	for _, name := range names {
+		found := false
+		for _, r := range registeredRules {
+			if r.Name == name {
+				rules = append(rules, r)
+				found = true
+				break
+			}
+		}
+		if !found {
+			return nil, fmt.Errorf("rule with name %s not found", name)
+		}
+	}
+	return rules, nil
+}
+
+func GetAllRules() []RuleData {
 	return registeredRules
 }

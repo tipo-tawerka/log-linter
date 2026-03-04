@@ -1,9 +1,7 @@
-package specchar
+package rules
 
 import (
 	"unicode"
-
-	"github.com/tipo-tawerka/log-linter/internal/analyzer/rules"
 )
 
 type RuleSpecChar struct {
@@ -33,5 +31,5 @@ func (r RuleSpecChar) isCorrectChar(char rune) bool {
 }
 
 func init() {
-	rules.AddRule(RuleSpecChar{}, "specchar", "требовать отсутствие специальных символов")
+	addRule(RuleSpecChar{}, "specchar", "требовать отсутствие специальных символов")
 }
