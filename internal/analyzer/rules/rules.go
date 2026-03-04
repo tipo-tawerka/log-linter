@@ -1,5 +1,9 @@
 package rules
 
+import (
+	"fmt"
+)
+
 // Rule — это интерфейс для проверки соответствия текста лога правилам.
 type Rule interface {
 	// IsCorrect проверяет, соответствует ли текст лога правилу.
@@ -10,11 +14,11 @@ type Rule interface {
 // CorrectionHint — это интерфейс для предоставления подсказки
 // по исправлению текста лога, если он не прошел проверку Rule.
 type CorrectionHint interface {
-	// ToCorrect принимает ошибочный текст лога и возвращает исправленный вариант.
-	ToCorrect(text string) string
+	// Fix принимает ошибочный текст лога и возвращает исправленный вариант.
+	Fix(text string) string
 }
 
-// RuleData хранит само правило и его метаданные (имя и описание).
+// RuleData хранит само правило и его метаданные.
 type RuleData struct {
 	Rule        Rule   // Правило для проверки текста лога
 	Name        string // Уникальное имя правила
@@ -30,7 +34,7 @@ var registeredRules []RuleData
 func AddRule(rule Rule, name string, description string) {
 	for _, r := range registeredRules {
 		if r.Name == name {
-			panic("rule " + name + " already exists")
+			panic(fmt.Sprintf("rules with name %s already exist", name))
 		}
 	}
 	registeredRules = append(registeredRules, RuleData{
