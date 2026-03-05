@@ -109,5 +109,5 @@ func collectViolations(expr ast.Expr, out *[]ArgViolation) {
 
 func init() {
 	buildSensitiveRegexp()
-	addRule(RuleSensitive{}, "sensitive", "требовать отсутствие чувствительных слов")
+	addRule(RuleSensitive{}, "sensitive", "required to avoid logging sensitive data")
 }
