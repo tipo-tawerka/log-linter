@@ -31,5 +31,5 @@ func (r RuleEnglish) Fix(text string) string {
 }
 
 func init() {
-	addRule(RuleEnglish{}, "english", "требовать только английские буквы")
+	addRule(RuleEnglish{}, "english", "required only english letters")
 }

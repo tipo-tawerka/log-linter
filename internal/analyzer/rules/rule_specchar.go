@@ -31,5 +31,5 @@ func (r RuleSpecChar) isCorrectChar(char rune) bool {
 }
 
 func init() {
-	addRule(RuleSpecChar{}, "specchar", "требовать отсутствие специальных символов")
+	addRule(RuleSpecChar{}, "specchar", "reuqired without special characters")
 }

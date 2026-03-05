@@ -28,5 +28,5 @@ func (r RuleLowercase) Fix(text string) string {
 }
 
 func init() {
-	addRule(RuleLowercase{}, "lowercase", "требовать только строчные буквы")
+	addRule(RuleLowercase{}, "lowercase", "required at least one lowercase letter")
 }
