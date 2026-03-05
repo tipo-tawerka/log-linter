@@ -1,1 +1,10 @@
-package loglinter
+package main
+
+import (
+	"github.com/tipo-tawerka/log-linter/internal/analyzer"
+	"golang.org/x/tools/go/analysis/singlechecker"
+)
+
+func main() {
+	singlechecker.Main(analyzer.Analyzer)
+}

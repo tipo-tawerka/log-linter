@@ -94,15 +94,15 @@ func TestAnalyzerFlags(t *testing.T) {
 	require.NotNil(t, f)
 	assert.Contains(t, f.DefValue, "lowercase")
 
-	f = Analyzer.Flags.Lookup("skip-tests")
+	f = Analyzer.Flags.Lookup("skiptests")
 	require.NotNil(t, f)
 	assert.Equal(t, "false", f.DefValue)
 
-	f = Analyzer.Flags.Lookup("sensitive-words")
+	f = Analyzer.Flags.Lookup("words")
 	require.NotNil(t, f)
 	assert.Equal(t, "", f.DefValue)
 
-	f = Analyzer.Flags.Lookup("sensitive-words-file")
+	f = Analyzer.Flags.Lookup("wordsfile")
 	require.NotNil(t, f)
 	assert.Equal(t, "", f.DefValue)
 }
