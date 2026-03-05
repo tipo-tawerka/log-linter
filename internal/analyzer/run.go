@@ -6,6 +6,7 @@ import (
 	"go/token"
 	"strconv"
 	"strings"
+	"sync"
 
 	"golang.org/x/tools/go/analysis"
 	"golang.org/x/tools/go/analysis/passes/inspect"
@@ -15,9 +16,17 @@ import (
 	"github.com/tipo-tawerka/log-linter/internal/analyzer/words"
 )
 
+var (
+	loadWordsOnce sync.Once
+	loadWordsErr  error
+)
+
 func run(pass *analysis.Pass) (any, error) {
-	if err := loadSensitiveWords(); err != nil {
-		return nil, err
+	loadWordsOnce.Do(func() {
+		loadWordsErr = loadSensitiveWords()
+	})
+	if loadWordsErr != nil {
+		return nil, loadWordsErr
 	}
 
 	activeRules, err := rules.GetRules(parseCSV(flagRules))
