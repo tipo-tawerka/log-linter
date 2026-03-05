@@ -78,7 +78,7 @@ func init() {
 	}
 	Analyzer.Flags.StringVar(&flagRules, "rules", strings.Join(names, ","),
 		"comma-separated list of enabled rules (optional, default is all)")
-	Analyzer.Flags.BoolVar(&flagSkipTests, "skip-tests", false,
+	Analyzer.Flags.BoolVar(&flagSkipTests, "skiptests", false,
 		"skip *_test.go files (optional, default is false)")
 	Analyzer.Flags.StringVar(&flagSensitiveWords, words.FlagSensitiveWords, "",
 		"comma-separated list of additional sensitive words (optional)")

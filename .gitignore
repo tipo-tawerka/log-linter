@@ -2,3 +2,4 @@
 backend_golang_testovoe.pdf
 /bin/
 coverage.out
+.vscode/

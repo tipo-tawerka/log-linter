@@ -4,8 +4,8 @@ import "fmt"
 
 // Имена флагов анализатора, привязанные к провайдерам.
 const (
-	FlagSensitiveWords = "sensitive-words"      // CSV через запятую
-	FlagSensitiveFile  = "sensitive-words-file" // путь к файлу
+	FlagSensitiveWords = "words"     // CSV через запятую
+	FlagSensitiveFile  = "wordsfile" // путь к файлу
 )
 
 // Provider — интерфейс для получения списка чувтсвительных слов.

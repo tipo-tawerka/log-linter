@@ -52,8 +52,8 @@ lint-examples: build
 	@echo "package: skip_tests"
 	@cd testdata && ../$(BUILD_DIR)/$(BINARY_NAME) ./skip_tests/ 2>&1; true
 	@echo ""
-	@echo "package: skip_tests with --skip-tests"
-	@cd testdata && ../$(BUILD_DIR)/$(BINARY_NAME) -skip-tests ./skip_tests/ 2>&1 && echo "  OK" || true
+	@echo " с -skiptests: тест-файлы не проверяются, нарушений нет"
+	@cd testdata && ../$(BUILD_DIR)/$(BINARY_NAME) -skiptests ./skip_tests/ 2>&1 && echo "  OK" || true
 	@echo ""
 	@echo "package: mixed_violations"
 	@cd testdata && ../$(BUILD_DIR)/$(BINARY_NAME) ./mixed_violations/ 2>&1; true
