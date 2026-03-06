@@ -1,4 +1,4 @@
-package main
+package plugin
 
 import (
 	"github.com/tipo-tawerka/log-linter/internal/analyzer"
@@ -13,5 +13,3 @@ func (*analyzerPlugin) GetAnalyzers() []*analysis.Analyzer {
 
 // AnalyzerPlugin — точка входа для golangci-lint.
 var AnalyzerPlugin analyzerPlugin
-
-func main() {}
